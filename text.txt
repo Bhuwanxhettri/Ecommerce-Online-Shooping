@@ -1,0 +1,17 @@
+https://www.youtube.com/watch?v=2zoq8vvwX4M&list=PL_6klLfS1WqFWzBpxBROQwHNIqkrZZPlz
+
+ -> Ecommerce Project Flip Cart Clone  ( video 1)
+      # downlode post man chrome extension
+      # create Header part
+ 
+ -> (Video 2)
+     # Home component 
+     # video 32 min (connecting to database)
+     # server Site (npm init 😍) to emty package.json file
+     # server Site (npm i express 😍)
+     # server automatically start npm i nodemon
+     # (npm i mongoose 😍) mongo db database library to connect database
+     # (npm i dotenv 😍) to create env file
+
+-> getUser Details
+    video (3:58)

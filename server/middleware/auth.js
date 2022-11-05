@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken';
-import User from '../model/UserModel';
+// import User from '../model/UserModel';
 
 
 export const isAuthenticatedUser = async(req,res,next)=>{
       const token = req.cookies.token;
-       
       if(!token){
        return  res.json({message:"Please login first"});
       }

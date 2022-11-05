@@ -15,3 +15,25 @@ https://www.youtube.com/watch?v=2zoq8vvwX4M&list=PL_6klLfS1WqFWzBpxBROQwHNIqkrZZ
 
 -> getUser Details
     video (3:58)
+
+
+
+https://github.com/meabhisingh/mernProjectEcommerce
+
+
+
+
+
+
+
+
+
+admin page
+-> create product
+-> delete product
+-> update product
+-> view product
+
+ # -> total reveniew
+ # -> total product sales
+ 

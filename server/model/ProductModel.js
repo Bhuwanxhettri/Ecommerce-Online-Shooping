@@ -20,16 +20,9 @@ const productSchema = mongoose.Schema({
             type:Number,
             default:0
         },
-        images:[{
-            public_id:{
-                type:String,
-                requred:true
-            },
-            url:{
-                type:String,
-                requred:true
-            }
-        }],
+        image:{
+            type:String,
+        },
         category:{
             type:String,
             requred:true
@@ -64,7 +57,7 @@ const productSchema = mongoose.Schema({
         user:{
            type:mongoose.Schema.ObjectId,
            ref:"User",
-           required:true
+        //    required:true
         },
         createdAt:{
             type:Date,

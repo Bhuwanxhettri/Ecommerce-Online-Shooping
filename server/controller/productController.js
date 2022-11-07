@@ -5,7 +5,7 @@ import ApiFeatures from '../utils/apiFeature.js';
 
 // admin - route 😎
 export const createProduct = async(req,res,next)=>{
-    req.body.user = req.user.id;
+    // req.body.user = req.user.id;
     let product;
     try{
         product =await Product.create(req.body);

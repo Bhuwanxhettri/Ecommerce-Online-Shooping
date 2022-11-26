@@ -17,7 +17,7 @@ function App() {
             <Pages />
           </Route>
           <Route path='/login' exact>
-            < SingIn />
+            <SingIn />
           </Route>
           <Route path='/cart' exact>
             <Cart/>

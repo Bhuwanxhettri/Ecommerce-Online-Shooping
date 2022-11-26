@@ -4,6 +4,7 @@ import { useSelector, useDispatch} from 'react-redux'
 import { useEffect } from "react"
 import { useState } from "react"
 import {  removeFromCart } from '../../reduxSlice/addtoCart'
+import Khalti from "../../components/khalti/Khalti"
 
 const Cart = () => {
   const cart = JSON.parse(localStorage.getItem("cart"));
@@ -33,7 +34,7 @@ const Cart = () => {
       <section className='cart-items flex mx-10'>
         <div className="w-9/12">
         {
-          cart.map((cartitem)=>{
+          cart?.map((cartitem)=>{
              return(
               <>
                 <div className='container d_flex'>
@@ -63,14 +64,16 @@ const Cart = () => {
           })
         }
         </div>
-          <div className='cart-total product'>
+          <div className='cart-total product py-5 '>
                       <h2>Cart Summary</h2>
-                      <div className=' d_flex'>
+                      <div className=' d_flex '>
                         <h4>Total Price :</h4>
                         <h3>${total}.00</h3>
+                        <Khalti/>
                       </div>
           </div>
       </section>
+
     </>
   )
 }

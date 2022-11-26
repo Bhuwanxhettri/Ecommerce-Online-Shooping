@@ -3,13 +3,34 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { useEffect } from "react"
 import { flashDeals } from "../../services/userApi/apiCall"
-import {useDispatch } from 'react-redux'
+import {useDispatch,useSelector } from 'react-redux'
 import { addToCart } from '../../reduxSlice/addtoCart'
 
 
 const FlashCard = () => {
   const dispatch = useDispatch()
   const [product,setProducts] = useState();
+  const cart = useSelector((state) => state.cart.cartItem)
+  const addCart = (productItmes)=>{
+      let tempCartItem = cart?.filter((item)=>{
+               if(item._id == productItmes._id)
+                   return item
+      })
+      if(tempCartItem.length == 0){
+        dispatch(addToCart(productItmes))
+      }else{
+        let tempProduct = {...tempCartItem[0]}
+        tempProduct.price+=productItmes.price
+        let tempCart = cart?.filter((item)=>{
+          if(tempCartItem[0]?._id != item._id)
+                return item
+        })
+        tempCart = [...tempCart,tempProduct]
+        dispatch(addToCart(tempCart))
+      }
+  
+  }
+
   useEffect(()=>{
        const fetchData = async()=>{
            const flashProducts = await flashDeals();
@@ -44,7 +65,7 @@ const FlashCard = () => {
                       <p>{productItems.description}</p>
                       <div className='price'>
                         <h4>${productItems.price}.00 </h4>
-                        <button onClick={()=>dispatch(addToCart(productItems))}>
+                        <button onClick={()=>addCart(productItems)}>
                             <i className='fa fa-plus'></i>
                         </button>
                       </div>

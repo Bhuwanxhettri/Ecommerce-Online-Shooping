@@ -21,7 +21,7 @@ const Navbar = () => {
               <li>
                 <Link to='/'>home</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to='/pages'>pages</Link>
               </li>
               <li>
@@ -35,7 +35,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to='/contact'>contact</Link>
-              </li>
+              </li> */}
             </ul>
 
             <button className='toggle' onClick={() => setMobileMenu(!MobileMenu)}>

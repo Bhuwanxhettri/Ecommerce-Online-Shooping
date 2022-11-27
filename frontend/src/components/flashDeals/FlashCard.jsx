@@ -5,8 +5,8 @@ import { useEffect } from "react"
 import { flashDeals } from "../../services/userApi/apiCall"
 import {useDispatch,useSelector } from 'react-redux'
 import { addToCart } from '../../reduxSlice/addtoCart'
-
-
+import {  toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const FlashCard = () => {
   const dispatch = useDispatch()
   const [product,setProducts] = useState();
@@ -30,7 +30,6 @@ const FlashCard = () => {
       }
   
   }
-
   useEffect(()=>{
        const fetchData = async()=>{
            const flashProducts = await flashDeals();
@@ -65,7 +64,10 @@ const FlashCard = () => {
                       <p>{productItems.description}</p>
                       <div className='price'>
                         <h4>${productItems.price}.00 </h4>
-                        <button onClick={()=>addCart(productItems)}>
+                        <button onClick={()=>{addCart(productItems)
+                           toast("Item added into Cart");
+                       
+                        }}>
                             <i className='fa fa-plus'></i>
                         </button>
                       </div>

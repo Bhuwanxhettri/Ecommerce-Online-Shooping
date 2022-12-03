@@ -7,13 +7,13 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state,action) => {
+    userLogin: (state,action) => {
       state.isLoggedIn = "true";
       state.user = action.payload
       localStorage.setItem("login","true");
       localStorage.setItem("user",state.user.email);
     },
-    logout: (state) => {
+    userLogout: (state) => {
       state.isLoggedIn = "false";
       state.user = null;
       localStorage.setItem("login","false");
@@ -24,5 +24,5 @@ export const authSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout} = authSlice.actions
+export const { userLogin, userLogout} = authSlice.actions
 export default authSlice.reducer

@@ -7,8 +7,10 @@ import {  removeFromCart } from '../../reduxSlice/addtoCart'
 import Khalti from "../../components/khalti/Khalti"
 
 const Cart = () => {
+  const isauth = useSelector((state) => state.auth.isLoggedIn);
   const cart = JSON.parse(localStorage.getItem("cart"));
   localStorage.setItem("cartLength",cart.length)
+  const cartLength = localStorage.getItem("cartLength");
   const dispatch = useDispatch()
   const [total,setTotalPrice] = useState(0);
   useEffect(()=>{
@@ -69,7 +71,10 @@ const Cart = () => {
                       <div className=' d_flex '>
                         <h4>Total Price :</h4>
                         <h3>${total}.00</h3>
-                        <Khalti/>
+                        {
+                          ((isauth =="true") && (cartLength>0) )?<><Khalti/></>:""
+                        }
+                        
                       </div>
           </div>
       </section>

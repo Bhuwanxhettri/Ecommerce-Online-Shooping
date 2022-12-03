@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registerApi } from "../../services/userApi/apiCall";
+import { loginApi, registerApi } from "../../services/userApi/apiCall";
+import { useHistory } from "react-router-dom";
+import {  useDispatch } from "react-redux";
+import { userLogin } from "./authSlice";
 
 const SingIn = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [login, setLogin] = useState(true);
   const [inputs, setInputs] = useState({
     name: "",
@@ -17,16 +22,30 @@ const SingIn = () => {
     }));
   };
 
-  const register = async() => {
+  const register = async () => {
     if (inputs.name != "" && inputs.email != "" && inputs.password) {
-          await registerApi(inputs)
-          toast("You have registerd Sucessfully");
-
+      await registerApi(inputs);
+      toast("You have registerd Sucessfully");
+      window.location.reload();
     } else {
       toast("Please fill Form first");
     }
   };
-  const notify = () => toast("Wow so easy!");
+  const auth = () => {
+    if (inputs.email != "" && inputs.password) {
+      loginApi(inputs).then((res) => {
+        if (res.message == "Successfully Logged In") {
+          history.push("/");
+          toast(`${res.message}`);
+          dispatch(userLogin(res.user));
+        } else {
+          toast(`${res}`);
+        }
+      });
+    } else {
+      toast("Please fill Form first");
+    }
+  };
   return (
     <>
       {/* Register */}
@@ -120,29 +139,41 @@ const SingIn = () => {
                 <div className="space-y-6">
                   <div className="">
                     <input
+                      name="email"
+                      required
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       className=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
-                      type=""
+                      type="email"
                       placeholder="Email"
                     />
                   </div>
                   <div className="relative" x-data="{ show: true }">
                     <input
+                      name="password"
+                      required
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                       placeholder="Password"
-                      className="text-sm text-gray-200 px-4 py-3 rounded-lg w-full bg-gray-200 focus:bg-gray-100 border border-gray-200 focus:outline-none focus:border-purple-400"
+                      type="password"
+                      className=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
                     />
                     <div className="flex items-center absolute inset-y-0 right-0 mr-3  text-sm leading-5"></div>
                   </div>
                   <div>
-                    <button className="bg-green-700 text-white font-bold px-10 w-full py-2 rounded-md">
+                    <button
+                      onClick={() => {
+                        auth()
+                      }}
+                      className="bg-green-700 text-white font-bold px-10 w-full py-2 rounded-md"
+                    >
                       Sign in
                     </button>
                   </div>
-                  <div className="flex items-center justify-center space-x-2 my-5">
-                    <span className="h-px w-16 bg-gray-100"></span>
-                    <span className="text-gray-600 font-normal">or</span>
-                    <span className="h-px w-16 bg-gray-100"></span>
-                  </div>
-                  <div className="flex justify-center gap-5 w-full ">
+                
+                  {/* <div className="flex justify-center gap-5 w-full ">
                     <button
                       type="submit"
                       className="w-full flex items-center justify-center mb-6 md:mb-0 border border-gray-300 hover:bg-slate-300 text-sm text-gray-500 p-3  rounded-lg tracking-wide font-medium  cursor-pointer transition ease-in duration-500"
@@ -171,7 +202,16 @@ const SingIn = () => {
                       </svg>
                       <span>Google</span>
                     </button>
-                  </div>
+                  </div> */}
+                  {/* <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                      console.log(credentialResponse);
+                    }}
+                    onError={() => {
+                      console.log("Login Failed");
+                    }}
+                  /> */}
+                  
                 </div>
               </div>
             </div>

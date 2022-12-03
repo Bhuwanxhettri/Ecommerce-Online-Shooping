@@ -10,13 +10,23 @@ export const flashDeals = async()=>{
     }
 }
 
-
 export const registerApi = async(payload)=>{
     try {
      let response = await axios.post(`${url}/register`,payload);
      return response.data;
  } catch (error) {
      console.log('Error while calling addUser API ',error);
+ }
+}
+
+
+export const loginApi = async(payload)=>{
+    try {
+     let response = await axios.post(`${url}/login`,payload);
+     console.log(response.data)
+     return response.data;
+ } catch (error) {
+     return error.response.data.message;
  }
 }
 

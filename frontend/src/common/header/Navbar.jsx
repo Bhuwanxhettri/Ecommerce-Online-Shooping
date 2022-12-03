@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
   // Toogle Menu
   const [MobileMenu, setMobileMenu] = useState(false)
+
   return (
     <>
       <header className='header'>
@@ -21,21 +22,7 @@ const Navbar = () => {
               <li>
                 <Link to='/'>home</Link>
               </li>
-              {/* <li>
-                <Link to='/pages'>pages</Link>
-              </li>
-              <li>
-                <Link to='/user'>user account</Link>
-              </li>
-              <li>
-                <Link to='/vendor'>vendor account</Link>
-              </li>
-              <li>
-                <Link to='/track'>track my order</Link>
-              </li>
-              <li>
-                <Link to='/contact'>contact</Link>
-              </li> */}
+             
             </ul>
 
             <button className='toggle' onClick={() => setMobileMenu(!MobileMenu)}>

@@ -1,4 +1,11 @@
 import mykey from "./KhaltiKey";
+import axios from "axios"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
+
+
+
 let config = {
     // replace this key with yours
     "publicKey": mykey.publicTestKey,
@@ -7,9 +14,17 @@ let config = {
     "productUrl": "http://localhost:3000",
     "eventHandler": {
         onSuccess (payload) {
-            // hit merchant api for initiating verfication
-            console.log(payload);
-            
+            const order = {
+                amount:payload.amount,
+                number:payload.mobile,
+                product:JSON.parse(localStorage.getItem("cart")),
+                user:localStorage.getItem("user")
+            }
+            console.log(order)
+            localStorage.removeItem("cart")
+            localStorage.setItem("cart","[]")
+            toast("Payment sucessfully");
+            window.location.reload(false);
         },
         // onError handler is optional
         onError (error) {
@@ -20,7 +35,7 @@ let config = {
             console.log('widget is closing');
         }
     },
-    "paymentPreference": ["KHALTI", "EBANKING","MOBILE_BANKING", "CONNECT_IPS", "SCT"],
+    "paymentPreference": ["KHALTI"],
 };
 
 export default config;

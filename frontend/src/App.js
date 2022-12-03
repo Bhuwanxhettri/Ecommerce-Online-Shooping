@@ -6,6 +6,7 @@ import Pages from "./pages/Pages";
 import Cart from "./common/Cart/Cart";
 import Footer from "./common/footer/Footer";
 import SingIn from "./common/auth/SingIn";
+import List from "./components/orderList/List"
 
 
 
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/login" exact>
               <SingIn />
+            </Route>
+            <Route path="/orderHistory" exact>
+               <List/>
             </Route>
             <Route path="/cart" exact>
               <Cart />

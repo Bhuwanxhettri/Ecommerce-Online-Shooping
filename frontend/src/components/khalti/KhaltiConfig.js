@@ -2,9 +2,7 @@ import mykey from "./KhaltiKey";
 import axios from "axios"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useHistory } from "react-router-dom";
-
-
+import { orderApi } from "../../services/userApi/apiCall";
 
 let config = {
     // replace this key with yours
@@ -20,10 +18,10 @@ let config = {
                 product:JSON.parse(localStorage.getItem("cart")),
                 user:localStorage.getItem("user")
             }
-            console.log(order)
             localStorage.removeItem("cart")
             localStorage.setItem("cart","[]")
             toast("Payment sucessfully");
+            orderApi(order)
             window.location.reload(false);
         },
         // onError handler is optional

@@ -65,15 +65,10 @@ export const login = async (req, res) => {
   if (!isPasswordCorrect) {
     return res.status(400).json({ message: "Inavlid Email / Password" });
   }
-  // after every thing is correct jwt token should generated for authorization
-  // secret key used for encode the user details
-  const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: "1d",
-  });
-
+ 
   return res
     .status(200)
-    .json({ message: "Successfully Logged In", user: existingUser, token });
+    .json({ message: "Successfully Logged In", user: existingUser });
 };
 
 export const verifyToken = (req, res, next) => {

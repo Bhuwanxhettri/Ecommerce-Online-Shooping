@@ -30,4 +30,21 @@ export const loginApi = async(payload)=>{
  }
 }
 
+export const orderApi = async(payload)=>{
+    try {
+        let response = await axios.post(`${url}/order`,payload);
+        return response.data;
+    } catch (err) {
+        console.log("Error whille calling Api",err)
+    }
+}
+export const getOrderApi = async(payload)=>{
+    try {
+        let response = await axios.get(`${url}/getOrder/${payload}`);
+        return response.data;
+    } catch (err) {
+        console.log("Error whille calling Api",err)
+    }
+}
+
 

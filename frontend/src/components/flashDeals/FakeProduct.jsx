@@ -83,7 +83,7 @@ const FakeProduct = () => {
                     <button
                       onClick={() => {
                         addCart(productItems);
-                        toast("Item added into Cart");
+                        // toast("Item added into Cart");
                       }}
                     >
                       <i className="fa fa-plus"></i>
@@ -95,6 +95,8 @@ const FakeProduct = () => {
           );
         })}
       </div>
+
+     
     </>
   );
 };

@@ -8,7 +8,7 @@ const Navbar = () => {
   const isauth = useSelector((state) => state.auth.isLoggedIn);
   return (
     <>
-      <header className="header">
+      <header className="header ">
         <div className="container d_flex">
           <div className="catgrories d_flex">
             <span class="fa-solid fa-border-all"></span>

@@ -29,14 +29,6 @@ const FakeProduct = () => {
       dispatch(addToCart(tempCart));
     }
   };
-  // const fakeProudct = ()=>{
-  //    fetch('https://fakestoreapi.com/products')
-  //           .then(res=>res.json())
-  //           .then(json=>setProduct(json))
-  // }
-  // useEffect(()=>{
-  //  fakeProudct();
-  // },[])
   const [star, setStar] = useState({
     totalStars: 5,
     sharpness: 2.5,
@@ -49,57 +41,50 @@ const FakeProduct = () => {
   });
   return (
     <>
-      <div className="grid-cols-4 grid bg-pink-50 p-10" >
-        {product?.map((productItems) => {
+            <div className="grid-cols-4 grid">
+
+            {product?.map((productItems) => {
           return (
-            <div class="max-w-2xl mx-auto">
-              <div class="bg-white shadow-md rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-                <div className="img w-full h-40">
+            <div class="container mx-auto p-9 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
+               <div className="img w-full h-40">
                   <img src={productItems.image} className="w-full h-full" />
                   <div className="product-like">
                     <label>{productItems.rating.count}</label> <br />
                     {/* <i className='fa-regular fa-heart' onClick={increment}></i> */}
                   </div>
                 </div>
-                <div class="px-5 pb-5">
-                  <h3>{productItems.name}</h3>
-
-                  <DynamicStar className="mt-5"
-                    rating={parseFloat(productItems.rating.rate)}
-                    width={parseFloat(star.width)}
-                    height={parseFloat(star.height)}
-                    outlined={
-                      star.outlinedColor ? star.outlinedColor : star.outlined
-                    }
-                    totalStars={star.totalStars}
-                    sharpnessStar={star.sharpness}
-                    fullStarColor={star.fullStarColor}
-                    emptyStarColor={star.emptyStarColor}
-                  />
-
-                  <p className="overflow-hidden h-14">{productItems.description}</p>
-                  <div class="flex items-center justify-between mt-5">
-                    <span class="text-md font-bold text-gray-900 dark:text-white">
-                      ${productItems.price}
-                    </span>
-                    <button
-                      onClick={() => {
-                        addCart(productItems);
-                        toast("Item added into Cart");
-                      }}
-                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Add to cart
-                    </button>
-                  </div>
+              <div class="flex justify-between items-center">
+                <div>
+                  <h1 class="mt-5 text-md font-semibold">{productItems.title}</h1>
+                  <hr />
+                  <p class="mt-2">${productItems.price}</p>
                 </div>
               </div>
+              <button
+                     onClick={() => {
+                      addCart(productItems);
+
+                    }}
+                   class="text-white text-md font-semibold bg-green-400 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 ">
+                    Add to Cart
+                  </button>
             </div>
           );
         })}
-      </div>
+              
+
+            </div>
+
+       
+
+
+     
+
+
     </>
   );
 };
 
 export default FakeProduct;
+
+

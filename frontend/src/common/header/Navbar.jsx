@@ -8,40 +8,21 @@ const Navbar = () => {
   const isauth = useSelector((state) => state.auth.isLoggedIn);
   return (
     <>
-      <header className="header">
-        <div className="container d_flex">
-          <div className="navlink">
-            <ul
-              className={
-                MobileMenu ? "nav-links-MobileMenu" : "link f_flex capitalize"
-              }
-              onClick={() => setMobileMenu(false)}
-            >
-              {/*<ul className='link f_flex uppercase {MobileMenu ? "nav-links-MobileMenu" : "nav-links"} onClick={() => setMobileMenu(false)}'>*/}
-              <li>
-                <Link to="/">home</Link>
-              </li>
-              {isauth == "true" && (
+      <header class="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02">
+        <nav class="nav font-semibold text-lg">
+          <ul class="flex items-center">
+            <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                <Link to="/">Home</Link>
+            </li>
+            {isauth == "true" && (
                 <>
-                  <li>
+                  <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                     <Link to="/orderHistory">Order List</Link>
                   </li>
                 </>
               )}
-            </ul>
-
-            <button
-              className="toggle"
-              onClick={() => setMobileMenu(!MobileMenu)}
-            >
-              {MobileMenu ? (
-                <i className="fas fa-times close home-btn"></i>
-              ) : (
-                <i className="fas fa-bars open"></i>
-              )}
-            </button>
-          </div>
-        </div>
+          </ul>
+        </nav>
       </header>
     </>
   );

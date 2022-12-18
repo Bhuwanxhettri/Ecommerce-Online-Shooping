@@ -14,7 +14,7 @@ const Search = () => {
           <div className="logo width ">
             <h1 className="text-center text-white">
               {" "}
-              <span className="font-semibold text-xl tracking-tight">Roshan</span> shooping Store
+              <span className="font-semibold text-xl tracking-tight"></span> Online Shooping
             </h1>
           </div>
           <div className="icon f_flex width">

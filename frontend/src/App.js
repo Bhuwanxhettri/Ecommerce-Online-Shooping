@@ -8,8 +8,6 @@ import Footer from "./common/footer/Footer";
 import SingIn from "./common/auth/SingIn";
 import List from "./components/orderList/List"
 
-
-
 function App() {
   return (
     <>

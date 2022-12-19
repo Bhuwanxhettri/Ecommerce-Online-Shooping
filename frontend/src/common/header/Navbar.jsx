@@ -14,7 +14,6 @@ const Navbar = () => {
             <span class="fa-solid fa-border-all"></span>
             <h4>Buy Product</h4>
           </div>
-
           <div className="navlink">
             <ul
               className={

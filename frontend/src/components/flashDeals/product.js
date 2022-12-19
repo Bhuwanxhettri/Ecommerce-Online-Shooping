@@ -123,6 +123,11 @@ export const data = [
     image: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
     rating: { rate: 4.8, count: 400 },
   },
+];
+
+
+export const product2 =[
+
   {
     _id: 13,
     title: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
@@ -176,16 +181,6 @@ export const data = [
     rating: { rate: 3.8, count: 679 },
   },
   {
-    _id: 18,
-    title: "MBJ Women's Sol_id Short Sleeve Boat Neck V ",
-    price: 9.85,
-    description:
-      "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
-    category: "women's clothing",
-    image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-    rating: { rate: 4.7, count: 130 },
-  },
-  {
     _id: 19,
     title: "Opna Women's Short Sleeve Moisture",
     price: 7.95,
@@ -205,4 +200,4 @@ export const data = [
     image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     rating: { rate: 3.6, count: 145 },
   },
-];
+]
